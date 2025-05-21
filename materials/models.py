@@ -18,6 +18,7 @@ class Сourse(models.Model):
 
 class Lesson(models.Model):
 
+    course = models.ForeignKey(Сourse, on_delete=models.SET_NULL, null=True, blank=True, related_name="course_in_lesson", verbose_name="Курс урока")
     name = models.CharField(max_length=150, verbose_name='Название', help_text='Введите название урока')
     description = models.TextField(blank=True, null=True, verbose_name='Описание', help_text='Введите описание урока')
     preview = models.ImageField(upload_to='catalog/image', blank=True, null=True, verbose_name='Превью (картинка)', help_text='Загрузите картинку')
