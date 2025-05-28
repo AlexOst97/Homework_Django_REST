@@ -10,7 +10,7 @@ class LessonSerializers(serializers.ModelSerializer):
 
 class СourseSerializers(serializers.ModelSerializer):
 
-    lesson = LessonSerializers(many=True)
+    lesson = LessonSerializers(many=True, read_only=True)
     amount_lesson = serializers.SerializerMethodField()
 
     def get_amount_lesson(self, course):
