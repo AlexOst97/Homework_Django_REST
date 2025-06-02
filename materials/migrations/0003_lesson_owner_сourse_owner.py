@@ -8,19 +8,33 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('materials', '0002_lesson_course'),
+        ("materials", "0002_lesson_course"),
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='lesson',
-            name='owner',
-            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='user_lesson', to=settings.AUTH_USER_MODEL, verbose_name='Владелец урока'),
+            model_name="lesson",
+            name="owner",
+            field=models.ForeignKey(
+                blank=True,
+                null=True,
+                on_delete=django.db.models.deletion.SET_NULL,
+                related_name="user_lesson",
+                to=settings.AUTH_USER_MODEL,
+                verbose_name="Владелец урока",
+            ),
         ),
         migrations.AddField(
-            model_name='сourse',
-            name='owner',
-            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='user_course', to=settings.AUTH_USER_MODEL, verbose_name='Владелец курса'),
+            model_name="сourse",
+            name="owner",
+            field=models.ForeignKey(
+                blank=True,
+                null=True,
+                on_delete=django.db.models.deletion.SET_NULL,
+                related_name="user_course",
+                to=settings.AUTH_USER_MODEL,
+                verbose_name="Владелец курса",
+            ),
         ),
     ]

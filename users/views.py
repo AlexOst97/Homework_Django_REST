@@ -9,7 +9,9 @@ from rest_framework.filters import SearchFilter, OrderingFilter
 class UserCreateAPIView(generics.CreateAPIView):
     serializer_class = UserSerializers
     queryset = User.objects.all()
-    permission_classes = [AllowAny,]
+    permission_classes = [
+        AllowAny,
+    ]
 
     def perform_create(self, serializer):
         user = serializer.save(is_active=True)
@@ -57,8 +59,8 @@ class PaymentListAPIView(generics.ListAPIView):
     serializer_class = PaymentSerializers
     queryset = Payment.objects.all()
     filter_backends = [SearchFilter, OrderingFilter]
-    search_fields = ['course', 'lesson', 'paid_course_or_lesson']
-    ordering_fields = ['payment_date']
+    search_fields = ["course", "lesson", "paid_course_or_lesson"]
+    ordering_fields = ["payment_date"]
 
 
 class PaymentRetrieveAPIView(generics.RetrieveAPIView):
