@@ -3,6 +3,7 @@ from rest_framework.permissions import AllowAny
 from users.models import User, Payment
 from users.serializers import UserSerializers, PaymentSerializers
 from rest_framework.filters import SearchFilter, OrderingFilter
+from users.services import create_product, create_price, create_checkout_session
 
 
 # User
@@ -43,6 +44,15 @@ class UserRetrieveAPIView(generics.RetrieveAPIView):
 class PaymentCreateAPIView(generics.CreateAPIView):
     serializer_class = PaymentSerializers
     queryset = Payment.objects.all()
+
+    def perform_create(self, serializer):
+        payment = serializer.save(user=self.request.user)
+        stripe_product_id = create_product(payment)
+        price_id = create_price(payment, stripe_product_id)
+        session_id, payment_link = create_checkout_session(price_id)
+        payment.session_id = session_id
+        payment.link = payment_link
+        payment.save()
 
 
 class PaymentUpdateAPIView(generics.UpdateAPIView):
