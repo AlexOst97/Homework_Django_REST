@@ -10,6 +10,7 @@ from materials.serializers import (
 from users.permissions import IsModerators, IsOwners
 from rest_framework.response import Response
 from django.shortcuts import get_object_or_404
+from materials.tasks import updating_courses
 
 
 # Сourse
@@ -30,6 +31,11 @@ class СourseViewSet(viewsets.ModelViewSet):
     def perform_create(self, serializer):
         serializer.save(owner=self.request.user)
 
+    def perform_update(self, serializer):
+        instance = serializer.save()
+        updating_courses.delay(instance.pk)
+        return instance
+
 
 # Lesson
 class LessonCreateAPIView(generics.CreateAPIView):
@@ -40,7 +46,6 @@ class LessonCreateAPIView(generics.CreateAPIView):
     def perform_create(self, serializer):
         lesson = serializer.save()
         lesson.owner = self.request.user
-        lesson.save()
 
 
 class LessonUpdateAPIView(generics.UpdateAPIView):
