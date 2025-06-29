@@ -1,14 +1,16 @@
-from celery import shared_task
-from materials.models import Сourse, Subscription
-from users.models import User
-from django.core.mail import send_mail
-from django.conf import settings
 from datetime import timedelta, timezone
+
+from celery import shared_task
+from django.conf import settings
+from django.core.mail import send_mail
+
+from materials.models import Subscription, Сourse
+from users.models import User
 
 
 @shared_task
 def updating_courses(course_id):
-    '''Рассылка писем пользователям об обновлении материалов курса'''
+    """Рассылка писем пользователям об обновлении материалов курса"""
 
     course = Сourse.objects.filter(pk=course_id).first()
     users = User.objects.all()
@@ -16,12 +18,11 @@ def updating_courses(course_id):
         subscription = Subscription.objects.filter(user=user, course=course).first()
         if subscription:
             send_mail(
-                subject=f'Обновление курса!',
+                subject=f"Обновление курса!",
                 message=f'Здравствуйте! Ваш Курс "{course.name}" успешно обновлен!',
                 from_email=settings.EMAIL_HOST_USER,
                 recipient_list=[user.email],
             )
-
 
     @shared_task
     def block_last_login():

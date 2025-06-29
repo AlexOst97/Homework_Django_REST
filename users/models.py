@@ -1,6 +1,7 @@
 from django.contrib.auth.models import AbstractUser
 from django.db import models
-from materials.models import Сourse, Lesson
+
+from materials.models import Lesson, Сourse
 
 
 class User(AbstractUser):

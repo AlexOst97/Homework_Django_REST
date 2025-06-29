@@ -1,6 +1,7 @@
+import os
 from datetime import timedelta
 from pathlib import Path
-import os
+
 from dotenv import load_dotenv
 
 load_dotenv(override=True)
@@ -111,7 +112,7 @@ REST_FRAMEWORK = {
     "DEFAULT_PERMISSION_CLASSES": (
         "rest_framework.permissions.IsAuthenticated",
     ),  # Проверка аутентификации (авторизации) пользователя
-    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema', # Документация API
+    "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",  # Документация API
 }
 
 # Настройки срока действия токенов
@@ -123,10 +124,10 @@ SIMPLE_JWT = {
 
 # Документация API
 SPECTACULAR_SETTINGS = {
-    'TITLE': 'Your Project API',
-    'DESCRIPTION': 'Your project description',
-    'VERSION': '1.0.0',
-    'SERVE_INCLUDE_SCHEMA': False,
+    "TITLE": "Your Project API",
+    "DESCRIPTION": "Your project description",
+    "VERSION": "1.0.0",
+    "SERVE_INCLUDE_SCHEMA": False,
 }
 
 STRIPE_API_KEY = os.getenv("STRIPE_API_KEY")
@@ -139,15 +140,15 @@ CELERY_TASK_TIME_LIMIT = 30 * 60
 
 
 # Настройки для Redis
-CELERY_BROKER_URL = 'redis://localhost:6379'
-CELERY_RESULT_BACKEND = 'redis://localhost:6379'
+CELERY_BROKER_URL = "redis://localhost:6379"
+CELERY_RESULT_BACKEND = "redis://localhost:6379"
 
 
 # Настройки для почты
-EMAIL_HOST = 'smtp.yandex.ru'
+EMAIL_HOST = "smtp.yandex.ru"
 EMAIL_PORT = 465
-EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')
-EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
+EMAIL_HOST_USER = os.getenv("EMAIL_HOST_USER")
+EMAIL_HOST_PASSWORD = os.getenv("EMAIL_HOST_PASSWORD")
 EMAIL_USE_TLS = False
 EMAIL_USE_SSL = True
 SERVER_EMAIL = EMAIL_HOST_USER

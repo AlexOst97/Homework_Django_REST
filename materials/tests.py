@@ -2,7 +2,8 @@ from django.db.models.expressions import result
 from django.urls import reverse
 from rest_framework import status
 from rest_framework.test import APITestCase
-from materials.models import Сourse, Lesson
+
+from materials.models import Lesson, Сourse
 from users.models import User
 
 

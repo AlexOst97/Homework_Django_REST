@@ -1,5 +1,6 @@
 from rest_framework import serializers
-from .models import Сourse, Lesson, Subscription
+
+from .models import Lesson, Subscription, Сourse
 from .validators import YouTubeValidator
 
 

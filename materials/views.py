@@ -1,16 +1,14 @@
-from rest_framework import viewsets, generics
-from rest_framework.permissions import IsAuthenticated
-from materials.models import Сourse, Lesson, Subscription
-from materials.pagination import MyPageNumberPagination
-from materials.serializers import (
-    СourseSerializers,
-    LessonSerializers,
-    SubscriptionSerializers,
-)
-from users.permissions import IsModerators, IsOwners
-from rest_framework.response import Response
 from django.shortcuts import get_object_or_404
+from rest_framework import generics, viewsets
+from rest_framework.permissions import IsAuthenticated
+from rest_framework.response import Response
+
+from materials.models import Lesson, Subscription, Сourse
+from materials.pagination import MyPageNumberPagination
+from materials.serializers import (LessonSerializers, SubscriptionSerializers,
+                                   СourseSerializers)
 from materials.tasks import updating_courses
+from users.permissions import IsModerators, IsOwners
 
 
 # Сourse
