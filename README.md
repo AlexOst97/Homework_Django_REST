@@ -25,6 +25,7 @@
 4. Установите Docker, по инструкции с официального сайта:: *https://docs.docker.com/engine/install/ubuntu/#install-using-the-repository*
 5. Активируйте файрвол: *sudo ufw enable*
 6. Откройте необходимые порты: Порт 80 для HTTP (*sudo ufw allow 80/tcp*), Порт 443 для HTTPS (*sudo ufw allow 443/tcp*), Порт 22 для SSH (*sudo ufw allow 22/tcp*)
+7. Проверьте настройки файрвола: *sudo ufw status*
 
 
 ## Команда проекта:

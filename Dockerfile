@@ -1,11 +1,13 @@
-# Используем официальный образ Nginx
-FROM nginx:latest
+FROM python:3.12-slim
 
-# Копируем файл конфигурации Nginx в контейнер
-COPY nginx.conf /etc/nginx/nginx.conf
+WORKDIR /app
 
-# Копируем статические файлы веб-сайта в директорию для обслуживания
-COPY html/ /usr/share/nginx/html/
+COPY requirements.txt ./
 
-# Открываем порт 80 для HTTP-трафика
-EXPOSE 80
+RUN pip install -r requirements.txt
+
+COPY . .
+
+EXPOSE 8000
+
+CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
