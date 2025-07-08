@@ -1,6 +1,10 @@
 name: Django Workflow
 on: [push, pull_request]
 
+env:
+     SECRET_KEY: ${{ secrets.SECRET_KEY }}
+     ANOTHER_VAR: value
+
 jobs:
   test:
     runs-on: ubuntu-latest
