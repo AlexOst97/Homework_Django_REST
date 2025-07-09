@@ -56,7 +56,7 @@ class LessonTestCase(APITestCase):
         r1 = data["results"]
         r2 = [
             {
-                "id": 4,
+                "id": self.lesson.pk,
                 "name": "Урок 1",
                 "description": "Что-то про урок",
                 "preview": None,
