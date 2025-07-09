@@ -61,8 +61,8 @@ class LessonTestCase(APITestCase):
                 "description": "Что-то про урок",
                 "preview": None,
                 "video_link": None,
-                "course": 3,
-                "owner": 3,
+                "course": self.course.pk,
+                "owner": self.user.pk,
             }
         ]
         self.assertEqual(response.status_code, status.HTTP_200_OK)
