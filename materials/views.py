@@ -5,8 +5,11 @@ from rest_framework.response import Response
 
 from materials.models import Lesson, Subscription, Сourse
 from materials.pagination import MyPageNumberPagination
-from materials.serializers import (LessonSerializers, SubscriptionSerializers,
-                                   СourseSerializers)
+from materials.serializers import (
+    LessonSerializers,
+    SubscriptionSerializers,
+    СourseSerializers,
+)
 from materials.tasks import updating_courses
 from users.permissions import IsModerators, IsOwners
 

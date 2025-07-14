@@ -4,8 +4,7 @@ from rest_framework.permissions import AllowAny
 
 from users.models import Payment, User
 from users.serializers import PaymentSerializers, UserSerializers
-from users.services import (create_checkout_session, create_price,
-                            create_product)
+from users.services import create_checkout_session, create_price, create_product
 
 
 # User

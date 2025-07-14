@@ -18,7 +18,7 @@ def updating_courses(course_id):
         subscription = Subscription.objects.filter(user=user, course=course).first()
         if subscription:
             send_mail(
-                subject=f"Обновление курса!",
+                subject="Обновление курса!",
                 message=f'Здравствуйте! Ваш Курс "{course.name}" успешно обновлен!',
                 from_email=settings.EMAIL_HOST_USER,
                 recipient_list=[user.email],

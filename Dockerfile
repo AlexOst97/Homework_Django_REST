@@ -1,13 +1,7 @@
-FROM python:3.12-slim
+ FROM nginx:latest
 
-WORKDIR /app
+ COPY nginx.conf /etc/nginx/nginx.conf
 
-COPY requirements.txt ./
+ COPY html/ /usr/share/nginx/html/
 
-RUN pip install -r requirements.txt
-
-COPY . .
-
-EXPOSE 8000
-
-CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
+ EXPOSE 80

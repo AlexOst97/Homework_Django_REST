@@ -3,10 +3,15 @@ from rest_framework.routers import DefaultRouter
 
 from materials.apps import MaterialsConfig
 
-from .views import (LessonCreateAPIView, LessonDestroyAPIView,
-                    LessonListAPIView, LessonRetrieveAPIView,
-                    LessonUpdateAPIView, SubscriptionCreateAPIView,
-                    СourseViewSet)
+from .views import (
+    LessonCreateAPIView,
+    LessonDestroyAPIView,
+    LessonListAPIView,
+    LessonRetrieveAPIView,
+    LessonUpdateAPIView,
+    SubscriptionCreateAPIView,
+    СourseViewSet,
+)
 
 router = DefaultRouter()
 router.register(r"courses", СourseViewSet, basename="courses")
